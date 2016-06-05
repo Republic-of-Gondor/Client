@@ -2,10 +2,6 @@ import javafx.embed.swing.JFXPanel;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.File;
 
 public class AudioPlayer extends JFXPanel	{
@@ -23,6 +19,7 @@ public class AudioPlayer extends JFXPanel	{
 			musicPlayer.dispose();
 
 		musicPlayer = new MediaPlayer(song);
+		musicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		musicPlayer.play();
 	}
 
@@ -47,11 +44,9 @@ public class AudioPlayer extends JFXPanel	{
 		soundPlayer = new MediaPlayer(sound);
 		soundPlayer.play();
 
-		soundPlayer.setOnEndOfMedia(new Runnable() {
-			public void run()	{
-				if (musicPlayer != null && musicPlayer.getStatus() != MediaPlayer.Status.DISPOSED)
-					musicPlayer.play();
-			}
+		soundPlayer.setOnEndOfMedia(() -> {
+			if (musicPlayer != null && musicPlayer.getStatus() != MediaPlayer.Status.DISPOSED)
+				musicPlayer.play();
 		});
 	}
 
