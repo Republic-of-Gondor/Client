@@ -62,7 +62,11 @@ class MusicPlayer extends JFXPanel	{
 	public void interrupt()	{
 		System.out.println("Thread count: " + ManagementFactory.getThreadMXBean().getThreadCount());
 		player.pause();
-		interruptPlayer.seek(new Duration(0));
+
+		File file = new File("resources/pokemon-recovery.mp3");
+		Media interruption = new Media(file.toURI().toString());
+		if(interruptPlayer != null) interruptPlayer.dispose();
+		interruptPlayer = new MediaPlayer(interruption);
 		interruptPlayer.play();
 		interruptPlayer.setOnEndOfMedia(new Runnable() {
 			public void run()	{
