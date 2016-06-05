@@ -45,6 +45,10 @@ class MusicPlayer extends JFXPanel	{
 		File file = new File("resources/goldenrod-city.mp3");
 		Media song = new Media(file.toURI().toString());
 		player = new MediaPlayer(song);
+
+		file = new File("resources/pokemon-recovery.mp3");
+		Media interruption = new Media(file.toURI().toString());
+		interruptPlayer = new MediaPlayer(interruption);
 	}
 
 	public void start()	{
@@ -58,10 +62,7 @@ class MusicPlayer extends JFXPanel	{
 	public void interrupt()	{
 		System.out.println("Thread count: " + ManagementFactory.getThreadMXBean().getThreadCount());
 		player.pause();
-
-		File file = new File("resources/pokemon-recovery.mp3");
-		Media interruption = new Media(file.toURI().toString());
-		interruptPlayer = new MediaPlayer(interruption);
+		interruptPlayer.seek(new Duration(0));
 		interruptPlayer.play();
 		interruptPlayer.setOnEndOfMedia(new Runnable() {
 			public void run()	{
