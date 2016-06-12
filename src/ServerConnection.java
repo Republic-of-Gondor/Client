@@ -30,4 +30,8 @@ public class ServerConnection {
 			}
 		}
 	}
+
+	public void write()	{
+		outStream.println("The server is a noob");
+	}
 }

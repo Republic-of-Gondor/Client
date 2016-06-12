@@ -18,6 +18,7 @@ public class KeyMap extends JPanel {
 					case KeyEvent.VK_RIGHT: Client.player.changeX(1); break;
 					case KeyEvent.VK_DOWN: Client.player.changeY(1); break;
 					case KeyEvent.VK_Z: Client.audioPlayer.playSound("pokemon-recovery"); break;
+					case KeyEvent.VK_H: Client.conn.write();
 				}
 			}
 		});
