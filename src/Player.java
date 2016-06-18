@@ -7,13 +7,14 @@ public class Player {
 	private ImageIcon overworldImage;
 
 	public Player()	{
-		xPosition = 10;
-		yPosition = 10;
+		xPosition = 5;
+		yPosition = 5;
 		overworldImage = new ImageIcon("resources/gold-right.png");
 	}
 
 	public void changeX(int change)	{
-		xPosition += change;
+		if(Client.map.getEntityAt(xPosition+change, yPosition) == " ")
+            xPosition += change;
 	}
 
 	public int getXPosition()	{
@@ -21,7 +22,8 @@ public class Player {
 	}
 
 	public void changeY(int change)	{
-		yPosition += change;
+		if(Client.map.getEntityAt(xPosition, yPosition+change) == " ")
+			yPosition += change;
 	}
 
 	public int getYPosition()	{

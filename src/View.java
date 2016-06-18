@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 public class View implements ActionListener	{
 
 	PimpPanel panel;
-
 	public View()	{
 		JFrame frame = new JFrame("Pokémon");
 
@@ -42,6 +41,8 @@ class PimpPanel extends JPanel 	{
 	protected void paintComponent(Graphics g)	{
 		super.paintComponent(g);
 		Player player = Client.player;
-		g.drawImage(player.getOverworldImage(), player.getXPosition() * 20, player.getYPosition() * 20, null);
+		Map map = Client.map;
+		map.drawMap(g, player.getXPosition(), player.getYPosition());
+		g.drawImage(player.getOverworldImage(), 250, 250, 50, 50, null);
 	}
 }
