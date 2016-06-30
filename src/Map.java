@@ -1,23 +1,40 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Map {
 
     private String[][] map =
             {
-                    {" ","X","X"," "," "," "," ","X","X","X"},
-                    {"X","X"," "," "," "," "," ","X"," "," "},
-                    {"X"," "," ","X","X"," "," ","X"," "," "},
-                    {" "," ","X","X","X"," "," "," "," "," "},
-                    {" "," ","X","X"," "," "," "," "," "," "},
-                    {" "," ","X"," "," "," "," "," "," ","X"},
-                    {" "," "," "," "," "," "," "," "," ","X"},
-                    {" ","X","X","X"," "," "," "," "," ","X"},
-                    {" "," "," "," ","X"," ","X"," "," ","X"},
-                    {"X","X","X"," ","X"," ","X"," "," "," "},
+                    {"T","T"," "," ","B","B","B","B","B","B","T","T","R","R","R","R","T","T","T"},
+                    {"T","T"," ","S","B","B","D","B","B","B","T","T","R","R","R","R","T","T","T"},
+                    {"T","T"," "," "," "," "," "," "," "," "," "," ","B","B","B","B","T","T","T"},
+                    {"T","T"," "," "," "," "," "," "," "," "," ","S","B","D","B","B","T","T","T"},
+                    {"T","T"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","W"},
+                    {"T","T"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","W"},
+                    {" "," "," "," "," "," "," "," ","S"," "," "," "," "," "," "," "," "," ","W"},
+                    {" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","W"},
+                    {"T","T","R","R","R","R"," "," "," "," "," "," "," "," "," "," "," ","t","T"},
+                    {"T","T","B","D","B","B"," "," "," "," "," "," "," "," "," "," "," ","t","T"},
+                    {" "," "," "," "," "," "," "," "," "," ","R","R","R","R"," "," "," ","t","T"},
+                    {" "," "," "," "," "," "," "," "," ","S","B","D","B","B"," "," "," ","t","T"},
+                    {"T","T"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","t","T"},
+                    {"T","T","t","t","t","t"," "," "," "," "," "," "," "," "," "," "," ","t","T"},
             };
 
-    private static int numOfBlocks = 10;
+    private static int numOfBlocks = 9;
     private static int size = 500/numOfBlocks;
+    private BufferedImage tileset;
+
+    public Map()    {
+        try {
+            tileset = ImageIO.read(new File("resources/tilesets/Newbarktown.png"));
+        } catch (IOException e) {
+            System.err.println("Yo dawg, couldn't find the file.");
+        }
+    }
 
     public String getEntityAt(int x, int y) {
         try {
@@ -39,9 +56,29 @@ public class Map {
 
         g.setFont(new Font(null, 0, size));
         for(int x = 0; x < numOfBlocks; x++) {
-                for(int y = 0; y < numOfBlocks; y++) {
-                    g.drawString(getEntityAt(x + (centerX - (numOfBlocks/2)), y + (centerY - (numOfBlocks/2))), x * size, y * size + size);
+            for(int y = 0; y < numOfBlocks; y++) {
+                g.drawString(getEntityAt(x + (centerX - (numOfBlocks/2)), y + (centerY - (numOfBlocks/2))), x * size, y * size + size);
             }
         }
+        BufferedImage tmp = null;
+        try {
+            tmp = ImageIO.read(new File("resources/gold-right.png"));
+        } catch (Exception e)   {
+
+        }
+        for(int x = 0; x < numOfBlocks; x++) {
+            for(int y = 0; y < numOfBlocks; y++) {
+                String entity = getEntityAt(x + (centerX - (numOfBlocks / 2)), y + (centerY - (numOfBlocks / 2)));
+                if (entity.compareTo("T") == 0)  {
+                    //g.setClip(0, 0, 50, 50);
+                    int spotX = x * size;
+                    int spotY = y * size;
+                    g.drawImage(tileset.getSubimage(0, 0, 50, 50), spotX, spotY, null);
+                    //g.setClip(null);
+                }
+            }
+        }
+
+
     }
 }

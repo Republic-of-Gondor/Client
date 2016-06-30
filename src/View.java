@@ -43,6 +43,6 @@ class PimpPanel extends JPanel 	{
 		Player player = Client.player;
 		Map map = Client.map;
 		map.drawMap(g, player.getXPosition(), player.getYPosition());
-		g.drawImage(player.getOverworldImage(), 250, 250, 50, 50, null);
+		g.drawImage(player.getOverworldImage(), 227, 224, 41, 50, null);
 	}
 }
