@@ -13,7 +13,7 @@ public class Player {
 	}
 
 	public void changeX(int change)	{
-		if(Client.map.getEntityAt(xPosition+change, yPosition) == " ")
+		if(Client.map.getEntityAt(xPosition+change, yPosition) == ' ')
             xPosition += change;
 	}
 
@@ -22,7 +22,7 @@ public class Player {
 	}
 
 	public void changeY(int change)	{
-		if(Client.map.getEntityAt(xPosition, yPosition+change) == " ")
+		if(Client.map.getEntityAt(xPosition, yPosition+change) == ' ')
 			yPosition += change;
 	}
 

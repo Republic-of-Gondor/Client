@@ -10,7 +10,7 @@ public class View implements ActionListener	{
 		JFrame frame = new JFrame("Pokémon");
 
 		panel = new PimpPanel();
-		panel.setPreferredSize(new Dimension(500, 500));
+		panel.setPreferredSize(new Dimension(Map.viewSize, Map.viewSize));
 
 		frame.add(new KeyMap());
 		frame.add(panel);
@@ -43,6 +43,7 @@ class PimpPanel extends JPanel 	{
 		Player player = Client.player;
 		Map map = Client.map;
 		map.drawMap(g, player.getXPosition(), player.getYPosition());
-		g.drawImage(player.getOverworldImage(), 227, 224, 41, 50, null);
+		g.drawImage(player.getOverworldImage(), (Map.viewSize / 2) - (Map.tileSize / 2),
+				(Map.viewSize / 2) - (Map.tileSize / 2), 41, 50, null);
 	}
 }

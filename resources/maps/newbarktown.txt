@@ -1,0 +1,23 @@
+24 22
+T T T T T T T T T T T T T T T T T T T T T T T T
+T T T T T T T T T T T T T T T T T T T T T T T T
+T T T T T T R R R R R R T T T T T T T T T T T T
+T T T T T T R R R R R R T T T T T T T T T T T T
+T T T T     B B B B B B T T R R R R T T T T T T
+T T T T   S B B D B B B T T R R R R T T T T T T
+T T T T                     B B B B T T T T T T
+T T T T                   S B D B B T T T T T T
+T T T T                                 W W W W
+T T T T                                 W W W W
+                    S                   W W W W
+                                        W W W W
+T T T T R R R R                       t T T T T
+T T T T B D B B                       t T T T T
+T T                     R R R R       t T T T T
+T T                   S B D B B       t T T T T
+T T T T                               t T T T T
+T T T T t t t t                       t T T T T
+T T T T T T T T T T T T T T T T T T T T T T T T
+T T T T T T T T T T T T T T T T T T T T T T T T
+T T T T T T T T T T T T T T T T T T T T T T T T
+T T T T T T T T T T T T T T T T T T T T T T T T
