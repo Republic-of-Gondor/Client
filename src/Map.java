@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Map {
 
 	private static int numOfBlocks = 9;
-	private static double scaling = 1.0;
+	public static double scaling = 2.0;
 	public static int tileSize = (int) (32 * scaling);
 	public final static int viewSize = tileSize * numOfBlocks;
 	private BufferedImage tileset;
@@ -33,7 +33,6 @@ public class Map {
 			return 'O';
 		}
 	}
-
 
 	public void drawMap(Graphics g, int centerX, int centerY) {
 		for(int y = 0; y < numOfBlocks; y++) {
@@ -91,15 +90,11 @@ public class Map {
 	}
 
 	private BufferedImage scaleImage(BufferedImage img, double scale)	{
-
-		System.out.println(img.getRaster());
-		BufferedImage after = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
+		BufferedImage after = new BufferedImage((int)(img.getWidth()*scale), (int)(img.getHeight()*scale), BufferedImage.TYPE_INT_ARGB);
 		AffineTransform at = new AffineTransform();
 		at.scale(scale, scale);
 		AffineTransformOp scaleOp = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
 		after = scaleOp.filter(img, after);
-
-		System.out.println(after.getRaster());
 
 		return after;
 	}
